@@ -16,19 +16,20 @@ import 'package:tabbed_view/tabbed_view.dart';
 
 /// Represents a widget for [DockingTabs].
 class DockingTabsWidget extends StatefulWidget {
-  DockingTabsWidget(
-      {Key? key,
-      required this.layout,
-      required this.dragOverPosition,
-      required this.dockingTabs,
-      this.onItemSelection,
-      this.onItemClose,
-      this.itemCloseInterceptor,
-      this.dockingButtonsBuilder,
-      required this.maximizableTab,
-      required this.maximizableTabsArea,
-      required this.draggable})
-      : super(key: key);
+  DockingTabsWidget({
+    Key? key,
+    required this.layout,
+    required this.dragOverPosition,
+    required this.dockingTabs,
+    this.onItemSelection,
+    this.onItemClose,
+    this.itemCloseInterceptor,
+    this.dockingButtonsBuilder,
+    required this.maximizableTab,
+    required this.maximizableTabsArea,
+    required this.draggable,
+    required this.disableMenuButton,
+  }) : super(key: key);
 
   final DockingLayout layout;
   final DockingTabs dockingTabs;
@@ -40,6 +41,7 @@ class DockingTabsWidget extends StatefulWidget {
   final bool maximizableTabsArea;
   final DragOverPosition dragOverPosition;
   final bool draggable;
+  final bool disableMenuButton;
 
   @override
   State<StatefulWidget> createState() => DockingTabsWidgetState();
@@ -98,6 +100,7 @@ class DockingTabsWidgetState extends State<DockingTabsWidget>
     Widget tabbedView = TabbedView(
         controller: controller,
         tabsAreaButtonsBuilder: _tabsAreaButtonsBuilder,
+        disableMenuButton: widget.disableMenuButton,
         onTabSelection: (int? index) {
           if (index != null) {
             widget.dockingTabs.selectedIndex = index;

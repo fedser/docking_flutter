@@ -16,18 +16,19 @@ import 'package:tabbed_view/tabbed_view.dart';
 /// Represents a widget for [DockingItem].
 @internal
 class DockingItemWidget extends StatefulWidget {
-  DockingItemWidget(
-      {Key? key,
-      required this.layout,
-      required this.dragOverPosition,
-      required this.item,
-      this.onItemSelection,
-      this.onItemClose,
-      this.itemCloseInterceptor,
-      this.dockingButtonsBuilder,
-      required this.maximizable,
-      required this.draggable})
-      : super(key: key);
+  DockingItemWidget({
+    Key? key,
+    required this.layout,
+    required this.dragOverPosition,
+    required this.item,
+    this.onItemSelection,
+    this.onItemClose,
+    this.itemCloseInterceptor,
+    this.dockingButtonsBuilder,
+    required this.maximizable,
+    required this.draggable,
+    required this.disableMenuButton,
+  }) : super(key: key);
 
   final DockingLayout layout;
   final DockingItem item;
@@ -38,6 +39,7 @@ class DockingItemWidget extends StatefulWidget {
   final bool maximizable;
   final DragOverPosition dragOverPosition;
   final bool draggable;
+  final bool disableMenuButton;
 
   @override
   State<StatefulWidget> createState() => DockingItemWidgetState();
@@ -106,6 +108,7 @@ class DockingItemWidgetState extends State<DockingItemWidget>
         tabCloseInterceptor: _tabCloseInterceptor,
         onTabClose: _onTabClose,
         controller: controller,
+        disableMenuButton: widget.disableMenuButton,
         onDraggableBuild: widget.draggable
             ? (TabbedViewController controller, int tabIndex, TabData tabData) {
                 return buildDraggableConfig(

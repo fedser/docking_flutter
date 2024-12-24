@@ -5,15 +5,19 @@ homepage: https://caduandrade.github.io/docking_flutter/
 repository: https://github.com/caduandrade/docking_flutter
 
 environment:
-  sdk: ">=2.12.0 <4.0.0"
-  flutter: ">=1.17.0"
+  sdk: '>=3.4.4 <4.0.0'
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   meta: ^1.7.0
-  tabbed_view: '>=1.18.0 <1.19.0'
-    #path: ../tabbed_view/
+  # tabbed_view: '>=1.18.0 <1.19.0'
+  tabbed_view:
+    git:
+      url: https://github.com/fedser/tabbed_view.git
+      ref: f9d1c9749c40fa0d84d08b663cc1856183d812d4
+    # path: ../tabbed_view/
   multi_split_view: '>=2.4.0 <2.5.0'
     #path: ../multi_split_view/
 
@@ -21,7 +25,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.2
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
