@@ -179,10 +179,11 @@ packages:
   tabbed_view:
     dependency: "direct main"
     description:
-      name: tabbed_view
-      sha256: "44a3629dd7b8a59c81e4d4d01a242c411481a8cf11d8cf6fb4b8513815f1d743"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: f9d1c9749c40fa0d84d08b663cc1856183d812d4
+      resolved-ref: f9d1c9749c40fa0d84d08b663cc1856183d812d4
+      url: "https://github.com/fedser/tabbed_view.git"
+    source: git
     version: "1.19.1"
   term_glyph:
     dependency: transitive

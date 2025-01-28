@@ -18,7 +18,11 @@ dependencies:
   flutter:
     sdk: flutter
   meta: ^1.7.0
-  tabbed_view: ^1.19.1
+  tabbed_view:
+    git:
+      url: https://github.com/fedser/tabbed_view.git
+      ref: f9d1c9749c40fa0d84d08b663cc1856183d812d4
+  # tabbed_view: ^1.19.1
     #path: ../tabbed_view/
   multi_split_view: ^3.6.1-rc.2
     #path: ../multi_split_view/
