@@ -126,10 +126,11 @@ packages:
   multi_split_view:
     dependency: "direct main"
     description:
-      name: multi_split_view
-      sha256: "8551eb4108467a00d80833adb86a938a3889ca8dcb3382b3a1786c2949610007"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "1220dca57927f766dfe869591524ae9d5707a507"
+      resolved-ref: "1220dca57927f766dfe869591524ae9d5707a507"
+      url: "https://github.com/fedser/multi_split_view.git"
+    source: git
     version: "3.6.1-rc.2"
   path:
     dependency: transitive

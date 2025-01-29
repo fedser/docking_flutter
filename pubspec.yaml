@@ -24,8 +24,13 @@ dependencies:
       ref: f9d1c9749c40fa0d84d08b663cc1856183d812d4
   # tabbed_view: ^1.19.1
     #path: ../tabbed_view/
-  multi_split_view: ^3.6.1-rc.2
-    #path: ../multi_split_view/
+    
+  # multi_split_view: ^3.6.1-rc.2
+  multi_split_view:
+    git:
+      url: https://github.com/fedser/multi_split_view.git
+      ref: 1220dca57927f766dfe869591524ae9d5707a507
+    # path: ../multi_split_view/
 
 dev_dependencies:
   flutter_test:

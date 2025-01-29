@@ -5,6 +5,7 @@ import 'package:docking/src/internal/layout/layout_stringify.dart';
 import 'package:docking/src/internal/layout/move_item.dart';
 import 'package:docking/src/internal/layout/remove_item.dart';
 import 'package:docking/src/internal/layout/remove_item_by_id.dart';
+import 'package:docking/src/internal/layout/update_size_of_item_by_id.dart';
 import 'package:docking/src/layout/area_builder.dart';
 import 'package:docking/src/layout/docking_area_type.dart';
 import 'package:docking/src/layout/drop_position.dart';
@@ -656,6 +657,23 @@ class DockingLayout extends ChangeNotifier {
       throw StateError('Root is not a DropArea');
     }
     //TODO maximize test
+  }
+
+  void updateItemSizeById({
+    required dynamic id,
+    double? size,
+    double? weight,
+    required bool minimize,
+  }) {
+    final List<LayoutModifier> modifiers = [
+      UpdateSizeOfItemById(
+        id: id,
+        size: size,
+        weight: weight,
+        minimize: minimize,
+      ),
+    ];
+    _rebuild(modifiers);
   }
 
   /// Rebuilds this layout with modifiers.
