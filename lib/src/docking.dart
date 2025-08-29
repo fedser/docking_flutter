@@ -24,6 +24,7 @@ class Docking extends StatefulWidget {
     this.antiAliasingWorkaround = true,
     this.draggable = true,
     this.disableMenuButton = false,
+    this.resizable = true,
   }) : super(key: key);
 
   final DockingLayout? layout;
@@ -37,6 +38,7 @@ class Docking extends StatefulWidget {
   final bool antiAliasingWorkaround;
   final bool draggable;
   final bool disableMenuButton;
+  final bool resizable;
 
   @override
   State<StatefulWidget> createState() => _DockingState();
@@ -160,6 +162,7 @@ class _DockingState extends State<Docking> {
         builder: _buildArea,
         axis: Axis.horizontal,
         controller: row.controller,
+        resizable: widget.resizable,
         onDividerDragUpdate: (index) => widget.layout?.notifyLayoutChange(),
         antiAliasingWorkaround: widget.antiAliasingWorkaround);
   }
@@ -170,6 +173,7 @@ class _DockingState extends State<Docking> {
         builder: _buildArea,
         axis: Axis.vertical,
         controller: column.controller,
+        resizable: widget.resizable,
         onDividerDragUpdate: (index) => widget.layout?.notifyLayoutChange(),
         antiAliasingWorkaround: widget.antiAliasingWorkaround);
   }
