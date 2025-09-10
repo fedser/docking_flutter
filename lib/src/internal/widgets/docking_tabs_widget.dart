@@ -31,6 +31,7 @@ class DockingTabsWidget extends StatefulWidget {
     required this.maximizableTabsArea,
     required this.draggable,
     required this.disableMenuButton,
+    required this.hideTabsAreaIfOneTab,
   }) : super(key: key);
 
   final DockingLayout layout;
@@ -44,6 +45,7 @@ class DockingTabsWidget extends StatefulWidget {
   final DragOverPosition dragOverPosition;
   final bool draggable;
   final bool disableMenuButton;
+  final bool hideTabsAreaIfOneTab;
 
   @override
   State<StatefulWidget> createState() => DockingTabsWidgetState();
@@ -100,6 +102,8 @@ class DockingTabsWidgetState extends State<DockingTabsWidget>
         math.min(widget.dockingTabs.selectedIndex, tabs.length - 1);
 
     Widget tabbedView = TabbedView(
+        tabsAreaVisible:
+            !(widget.hideTabsAreaIfOneTab && controller.tabs.length <= 1),
         controller: controller,
         tabsAreaButtonsBuilder: _tabsAreaButtonsBuilder,
         disableMenuButton: widget.disableMenuButton,

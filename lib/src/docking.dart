@@ -25,6 +25,7 @@ class Docking extends StatefulWidget {
     this.draggable = true,
     this.disableMenuButton = false,
     this.resizable = true,
+    this.hideTabsAreaIfOneTab = false,
   }) : super(key: key);
 
   final DockingLayout? layout;
@@ -39,6 +40,7 @@ class Docking extends StatefulWidget {
   final bool draggable;
   final bool disableMenuButton;
   final bool resizable;
+  final bool hideTabsAreaIfOneTab;
 
   @override
   State<StatefulWidget> createState() => _DockingState();
@@ -116,6 +118,7 @@ class _DockingState extends State<Docking> {
         dockingButtonsBuilder: widget.dockingButtonsBuilder,
         maximizable: widget.maximizableItem,
         disableMenuButton: widget.disableMenuButton,
+        hideTabsAreaIfOneTab: widget.hideTabsAreaIfOneTab,
       );
     } else if (area is DockingRow) {
       return _row(context, area);
@@ -135,6 +138,7 @@ class _DockingState extends State<Docking> {
           dockingButtonsBuilder: widget.dockingButtonsBuilder,
           maximizable: widget.maximizableItem,
           disableMenuButton: widget.disableMenuButton,
+          hideTabsAreaIfOneTab: widget.hideTabsAreaIfOneTab,
         );
       }
       return DockingTabsWidget(
@@ -150,6 +154,7 @@ class _DockingState extends State<Docking> {
         maximizableTab: widget.maximizableTab,
         maximizableTabsArea: widget.maximizableTabsArea,
         disableMenuButton: widget.disableMenuButton,
+        hideTabsAreaIfOneTab: widget.hideTabsAreaIfOneTab,
       );
     }
     throw UnimplementedError(
