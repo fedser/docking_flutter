@@ -29,6 +29,7 @@ class DockingItemWidget extends StatefulWidget {
     required this.draggable,
     required this.disableMenuButton,
     required this.hideTabsAreaIfOneTab,
+    required this.customBorderTabInfo,
   }) : super(key: key);
 
   final DockingLayout layout;
@@ -42,6 +43,7 @@ class DockingItemWidget extends StatefulWidget {
   final bool draggable;
   final bool disableMenuButton;
   final bool hideTabsAreaIfOneTab;
+  final CustomBorderTabInfo? customBorderTabInfo;
 
   @override
   State<StatefulWidget> createState() => DockingItemWidgetState();
@@ -85,6 +87,7 @@ class DockingItemWidgetState extends State<DockingItemWidget>
 
     List<TabData> tabs = [
       TabData(
+          id: widget.item.id,
           value: widget.item,
           text: name,
           content: content,
@@ -93,7 +96,10 @@ class DockingItemWidgetState extends State<DockingItemWidget>
           buttons: buttons,
           draggable: widget.draggable)
     ];
-    TabbedViewController controller = TabbedViewController(tabs);
+    TabbedViewController controller = TabbedViewController(
+      tabs,
+      customBorderTabInfo: widget.customBorderTabInfo,
+    );
 
     OnTabSelection? onTabSelection;
     if (widget.onItemSelection != null) {

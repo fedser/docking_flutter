@@ -32,6 +32,7 @@ class DockingTabsWidget extends StatefulWidget {
     required this.draggable,
     required this.disableMenuButton,
     required this.hideTabsAreaIfOneTab,
+    required this.customBorderTabInfo,
   }) : super(key: key);
 
   final DockingLayout layout;
@@ -46,6 +47,7 @@ class DockingTabsWidget extends StatefulWidget {
   final bool draggable;
   final bool disableMenuButton;
   final bool hideTabsAreaIfOneTab;
+  final CustomBorderTabInfo? customBorderTabInfo;
 
   @override
   State<StatefulWidget> createState() => DockingTabsWidgetState();
@@ -88,6 +90,7 @@ class DockingTabsWidgetState extends State<DockingTabsWidget>
         }
       }
       tabs.add(TabData(
+          id: child.id,
           value: child,
           text: child.name != null ? child.name! : '',
           content: content,
@@ -97,9 +100,14 @@ class DockingTabsWidgetState extends State<DockingTabsWidget>
           buttons: buttons,
           draggable: widget.draggable));
     });
-    TabbedViewController controller = TabbedViewController(tabs);
-    controller.selectedIndex =
+    TabbedViewController controller = TabbedViewController(
+      tabs,
+      customBorderTabInfo: widget.customBorderTabInfo,
+    );
+    var resTabIndex =
         math.min(widget.dockingTabs.selectedIndex, tabs.length - 1);
+
+    controller.selectedIndex = resTabIndex;
 
     Widget tabbedView = TabbedView(
         tabsAreaVisible:
@@ -110,7 +118,9 @@ class DockingTabsWidgetState extends State<DockingTabsWidget>
         onTabSelection: (int? index) {
           if (index != null) {
             widget.dockingTabs.selectedIndex = index;
-            if (widget.onItemSelection != null) {
+            if (widget.onItemSelection != null &&
+                index >= 0 &&
+                index < widget.dockingTabs.childrenCount) {
               widget.onItemSelection!(widget.dockingTabs.childAt(index));
             }
           }

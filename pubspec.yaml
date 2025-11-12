@@ -21,7 +21,7 @@ dependencies:
   tabbed_view:
     git:
       url: https://github.com/fedser/tabbed_view.git
-      ref: f9d1c9749c40fa0d84d08b663cc1856183d812d4
+      ref: 2b57e2c08687ac1f872a5b759ce8b8fd612041ec
   # tabbed_view: ^1.19.1
     #path: ../tabbed_view/
     
