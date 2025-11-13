@@ -21,9 +21,9 @@ dependencies:
   tabbed_view:
     git:
       url: https://github.com/fedser/tabbed_view.git
-      ref: 2b57e2c08687ac1f872a5b759ce8b8fd612041ec
+      ref: 3e707b0292af34d758c0a5a34540694ccf421e85
   # tabbed_view: ^1.19.1
-    #path: ../tabbed_view/
+    # path: ../tabbed_view/
     
   # multi_split_view: ^3.6.1-rc.2
   multi_split_view:
