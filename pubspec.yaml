@@ -29,7 +29,7 @@ dependencies:
   multi_split_view:
     git:
       url: https://github.com/fedser/multi_split_view.git
-      ref: 1220dca57927f766dfe869591524ae9d5707a507
+      ref: f197a19a0049178291971e9deeba9bdd5e02b5bb
     # path: ../multi_split_view/
 
 dev_dependencies:

@@ -20,50 +20,45 @@ abstract class ContentWrapperBase extends StatelessWidget {
   @nonVirtual
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      List<Widget> children = [Positioned.fill(child: child)];
+    // percentage of width reserved for detecting center area
+    const double centerWidthRatio = 0.50;
+    const double edgeWidthRatio = (1.0 - centerWidthRatio) / 2;
 
-      // percentage of width reserved for detecting center area
-      const double centerWidthRatio = 50;
-      // reserved width to detect center area
-      final double centerWidth = centerWidthRatio * constraints.maxWidth / 100;
-      // reserved width to detect left and right areas
-      final double horizontalEdgeWidth =
-          (constraints.maxWidth - centerWidth) / 2;
-      // height reserved for detecting the top and bottom areas
-      final double verticalEdgeHeight = constraints.maxHeight / 2;
+    List<Widget> children = [Positioned.fill(child: child)];
 
-      children.add(Positioned(
-          child: buildDropAnchor(DropPosition.left),
-          width: horizontalEdgeWidth,
-          bottom: 0,
-          top: 0,
-          left: 0));
+    // Left drop zone
+    children.add(Positioned.fill(
+        child: FractionallySizedBox(
+            widthFactor: edgeWidthRatio,
+            heightFactor: 1.0,
+            alignment: Alignment.centerLeft,
+            child: buildDropAnchor(DropPosition.left))));
 
-      children.add(Positioned(
-          child: buildDropAnchor(DropPosition.right),
-          width: horizontalEdgeWidth,
-          bottom: 0,
-          top: 0,
-          right: 0));
+    // Right drop zone
+    children.add(Positioned.fill(
+        child: FractionallySizedBox(
+            widthFactor: edgeWidthRatio,
+            heightFactor: 1.0,
+            alignment: Alignment.centerRight,
+            child: buildDropAnchor(DropPosition.right))));
 
-      children.add(Positioned(
-          child: buildDropAnchor(DropPosition.top),
-          height: verticalEdgeHeight,
-          top: 0,
-          left: horizontalEdgeWidth,
-          right: horizontalEdgeWidth));
+    // Top drop zone
+    children.add(Positioned.fill(
+        child: FractionallySizedBox(
+            widthFactor: centerWidthRatio,
+            heightFactor: 0.5,
+            alignment: Alignment.topCenter,
+            child: buildDropAnchor(DropPosition.top))));
 
-      children.add(Positioned(
-          child: buildDropAnchor(DropPosition.bottom),
-          height: verticalEdgeHeight,
-          bottom: 0,
-          left: horizontalEdgeWidth,
-          right: horizontalEdgeWidth));
+    // Bottom drop zone
+    children.add(Positioned.fill(
+        child: FractionallySizedBox(
+            widthFactor: centerWidthRatio,
+            heightFactor: 0.5,
+            alignment: Alignment.bottomCenter,
+            child: buildDropAnchor(DropPosition.bottom))));
 
-      return Stack(children: children);
-    });
+    return Stack(children: children);
   }
 
   DropAnchorBaseWidget buildDropAnchor(DropPosition dropPosition);
